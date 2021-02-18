@@ -48,6 +48,15 @@ public class SceneLoader : MonoBehaviour
 
         StartCoroutine(Load());
     }
+    
+    /// <summary>
+    /// Restart scene.
+    /// </summary>
+    public void Restart()
+    {
+        // Reload current active scene
+        Load(SceneManager.GetActiveScene().name);
+    }
 
     /// <summary>
     /// Quit game.

@@ -255,6 +255,10 @@ PrefabInstance:
       propertyPath: color
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3911482568497119962, guid: 75c51bcc2de9b544b8f6dc04e5df3c64, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8167806352928437206}
     - target: {fileID: 4736243622575830922, guid: 75c51bcc2de9b544b8f6dc04e5df3c64, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -396,6 +400,10 @@ PrefabInstance:
       propertyPath: color
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3911482568497119962, guid: 75c51bcc2de9b544b8f6dc04e5df3c64, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8167806352928437206}
     - target: {fileID: 6340061897110324858, guid: 75c51bcc2de9b544b8f6dc04e5df3c64, type: 3}
       propertyPath: moveWithCustomTransform
       value: 

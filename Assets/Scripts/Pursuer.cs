@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Pursuer : Enemy
 {
+    private const float Speed = 5f;
+
     /// <summary>
     /// Unity Event function.
     /// Initialize before first frame update.
@@ -15,7 +17,7 @@ public class Pursuer : Enemy
     /// Unity Event function.
     /// Update once per frame.
     /// </summary>
-    private void Update()
+    private void FixedUpdate()
     {
         if (!isDead) Pursue(player.transform);
     }
@@ -26,6 +28,9 @@ public class Pursuer : Enemy
     /// <param name="target">Target to move to</param>
     private void Pursue(Transform target)
     {
+        // Look at target
         transform.LookAt(target);
+        // Move forward
+        rigidbody.MovePosition(rigidbody.position + transform.forward * (Speed * Time.fixedDeltaTime));
     }
 }

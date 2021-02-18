@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2060988059945812181}
   - component: {fileID: 2060988060211895532}
   m_Layer: 5
-  m_Name: SettingMaster
+  m_Name: SettingController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6512283548192814288, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_text
-      value: < Back
+      value: Back
       objectReference: {fileID: 0}
     - target: {fileID: 6512283548526296801, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_text
@@ -967,7 +967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6512283548192814288, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_text
-      value: < Back
+      value: Back
       objectReference: {fileID: 0}
     - target: {fileID: 6512283548526296801, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_text
@@ -1372,7 +1372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 791829786293664553, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_text
-      value: Visuals >
+      value: Visuals
       objectReference: {fileID: 0}
     - target: {fileID: 791829786295050904, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1504,7 +1504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6512283548192814288, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_text
-      value: Audio >
+      value: Audio
       objectReference: {fileID: 0}
     - target: {fileID: 6512283548526296801, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_text
@@ -1640,11 +1640,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6512283548675203303, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_text
-      value: < Back
+      value: Back
       objectReference: {fileID: 0}
     - target: {fileID: 6512283548858285883, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_text
-      value: Controls >
+      value: 'Controls
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 6512283548860982920, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_Name
@@ -2013,7 +2015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6512283548675203303, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_text
-      value: < Back
+      value: Back
       objectReference: {fileID: 0}
     - target: {fileID: 6512283548858285883, guid: 596a5017f9261ef4198aeef1b03a417f, type: 3}
       propertyPath: m_text

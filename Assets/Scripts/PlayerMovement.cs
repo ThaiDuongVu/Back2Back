@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private Player player;
 
-    private Rigidbody rigidBody;
     private Vector3 movement;
     private Vector3 direction;
     private float currentVelocity;
@@ -42,8 +41,6 @@ public class PlayerMovement : MonoBehaviour
         // Look rotation
         inputManager.Player.Look.performed += LookOnPerformed;
         inputManager.Player.Look.canceled += LookOnCanceled;
-
-        inputManager.Game.Test.performed += (InputAction.CallbackContext context) => { player.characters[0].EnableRagdoll(); player.characters[1].EnableRagdoll(); };
 
         inputManager.Enable();
     }
@@ -128,7 +125,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<Player>();
-        rigidBody = GetComponent<Rigidbody>();
 
         camera = Camera.main;
         if (camera is { }) mainCamera = camera.GetComponent<MainCamera>();
@@ -140,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        if (Time.timeScale == 0f) return;
+        if (Time.timeScale == 0f || player.IsDead) return;
 
         // If player is walking then accelerate
         if (player.IsWalking) Accelerate();
@@ -157,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (Time.timeScale == 0f) return;
+        if (Time.timeScale == 0f || player.IsDead) return;
 
         Animate();
         Rotate();
@@ -169,7 +165,7 @@ public class PlayerMovement : MonoBehaviour
     private void Walk()
     {
         // movement = Quaternion.Euler(0f, 0f, camera.transform.eulerAngles.z) * direction;
-        rigidBody.MovePosition(rigidBody.position + direction * (currentVelocity * Time.fixedDeltaTime));
+        player.Rigidbody.MovePosition(player.Rigidbody.position + direction * (currentVelocity * Time.fixedDeltaTime));
     }
 
     /// <summary>

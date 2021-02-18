@@ -3,7 +3,12 @@ using UnityEngine;
 public class PlayerGunLaser : MonoBehaviour
 {
     [SerializeField] private ProcessColor color;
+    [SerializeField] private Player player;
 
+    /// <summary>
+    /// Unity Event function.
+    /// Handle trigger collision.
+    /// </summary>
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
@@ -12,20 +17,14 @@ public class PlayerGunLaser : MonoBehaviour
 
             // If correct color then destroy enemy
             if (color == enemy.color)
-            {
-                // Enable enemy ragdoll
-                enemy.EnableRagdoll();
                 // Destroy enemy
-
                 enemy.Die();
-                // Shake camera
-                CameraShaker.Instance.Shake(CameraShakeMode.Normal);
-            }
             // If incorrect color then deal damage to player
             else
-            {
+                player.TakeDamage(10f);
 
-            }
+            // Shake camera
+            CameraShaker.Instance.Shake(CameraShakeMode.Normal);
         }
     }
 }

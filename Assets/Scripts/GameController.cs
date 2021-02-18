@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
     public GameState State { get; set; } = GameState.Started;
 
     [SerializeField] private Menu pauseMenu;
+    [SerializeField] private Menu gameOverMenu;
     [SerializeField] private Menu[] otherMenus;
 
     [SerializeField] private PostProcessProfile postProcessProfile;
@@ -136,7 +137,7 @@ public class GameController : MonoBehaviour
         // Disable depth of field effect
         SetDepthOfField(false);
 
-        // Disable pause menu
+        // Disable menus
         pauseMenu.SetEnabled(false);
         pauseMenu.SetInteractable(true);
 
@@ -150,5 +151,22 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1f;
 
         DisableCursor();
+    }
+
+    /// <summary>
+    /// Handle game over.
+    /// </summary>
+    public void GameOver()
+    {
+        // Update game state
+        State = GameState.Over;
+
+        // Enable depth of field effect
+        SetDepthOfField(true);
+
+        // Enable pause menu
+        gameOverMenu.SetEnabled(true);
+
+        EnableCursor();
     }
 }

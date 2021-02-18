@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private float damage;
+
     [HideInInspector] public ProcessColor color;
     private int colorIndex;
 
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour
     private CapsuleCollider capsuleCollider;
 
     protected Player player;
+    protected new Rigidbody rigidbody;
 
     /// <summary>
     /// Unity Event function.
@@ -31,6 +34,7 @@ public class Enemy : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
 
         player = FindObjectOfType<Player>();
+        rigidbody = GetComponent<Rigidbody>();
 
         bodyColliders = new BoxCollider[bodyParts.Length];
         for (int i = 0; i < bodyColliders.Length; i++)
@@ -91,6 +95,25 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         isDead = true;
+        EnableRagdoll();
+
         StartCoroutine(StartDying());
+    }
+
+    /// <summary>
+    /// Unity Event function.
+    /// Handle trigger collision.
+    /// </summary>
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Player player = other.GetComponent<Player>();
+            // Deal damage to player
+            player.TakeDamage(damage);
+
+            // Shake camera
+            CameraShaker.Instance.Shake(CameraShakeMode.Normal);
+        }
     }
 }

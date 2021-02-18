@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 454310912189792041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 454310912797733698}
   m_RootOrder: 0
@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a5153eb0c024842862ad9f9f6dc971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   color: 0
   coloredMaterials:
   - {fileID: 2100000, guid: 58f0439bdd461784fa79494d9e05ece3, type: 2}
@@ -363,7 +364,6 @@ MonoBehaviour:
   - {fileID: 454310912189792042}
   - {fileID: 454310913183442838}
   - {fileID: 454310913507733030}
-  bodyColliders: []
 --- !u!1 &454310913507733029
 GameObject:
   m_ObjectHideFlags: 0

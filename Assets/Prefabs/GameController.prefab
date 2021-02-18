@@ -44,4 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  gameOverMenu: {fileID: 0}
+  otherMenus:
+  - {fileID: 0}
+  - {fileID: 0}
   postProcessProfile: {fileID: 11400000, guid: 95197fa6b650bfc4289a6f9f54a83070, type: 2}
