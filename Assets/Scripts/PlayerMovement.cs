@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         inputManager.Player.Look.performed += LookOnPerformed;
         inputManager.Player.Look.canceled += LookOnCanceled;
 
-        inputManager.Game.Test.performed += (InputAction.CallbackContext context) => { player.characters[0].EnableRagdoll(); };
+        inputManager.Game.Test.performed += (InputAction.CallbackContext context) => { player.characters[0].EnableRagdoll(); player.characters[1].EnableRagdoll(); };
 
         inputManager.Enable();
     }

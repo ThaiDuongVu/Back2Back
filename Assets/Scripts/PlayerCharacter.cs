@@ -6,6 +6,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private ParticleSystem trail;
 
     [SerializeField] private Rigidbody[] bodyParts;
+    private BoxCollider[] bodyColliders;
 
     /// <summary>
     /// Unity Event function.
@@ -14,6 +15,10 @@ public class PlayerCharacter : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+
+        bodyColliders = new BoxCollider[bodyParts.Length];
+        for (int i = 0; i < bodyColliders.Length; i++)
+            bodyColliders[i] = bodyParts[i].GetComponent<BoxCollider>();
     }
 
     /// <summary>
@@ -51,7 +56,11 @@ public class PlayerCharacter : MonoBehaviour
         // Disable animation
         animator.enabled = false;
 
-        // Enable each body part physics
+        // Enable body colliders
+        foreach (BoxCollider collider in bodyColliders)
+            collider.enabled = true;
+
+        // Enable body physics
         foreach (Rigidbody part in bodyParts)
         {
             part.isKinematic = false;
