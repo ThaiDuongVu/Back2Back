@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -30,6 +31,13 @@ public class GameController : MonoBehaviour
     [SerializeField] private PostProcessProfile postProcessProfile;
     private DepthOfField depthOfField;
 
+    [SerializeField] private Player player;
+    [SerializeField] private Image playerHealthBar;
+
+    [SerializeField] private Enemy[] enemyPrefabs;
+    private float enemySpawnTimer;
+    private float enemySpawnTimerMax;
+
     private InputManager inputManager;
 
     /// <summary>
@@ -39,9 +47,7 @@ public class GameController : MonoBehaviour
     private void OnEnable()
     {
         inputManager = new InputManager();
-
         inputManager.Game.Escape.performed += EscapeOnPerformed;
-
         inputManager.Enable();
     }
 
@@ -78,6 +84,24 @@ public class GameController : MonoBehaviour
         DisableCursor();
 
         SetDepthOfField(false);
+
+        ResetEnemySpawnTimer();
+    }
+
+    /// <summary>
+    /// Unity Event function.
+    /// Update once per frame.
+    /// </summary>
+    private void Update()
+    {
+        UpdatePlayerHealthBar();
+
+        // Spawn a new enemy on timer ends
+        if (EnemySpawnTimer())
+        {
+            SpawnEnemy();
+            ResetEnemySpawnTimer();
+        }
     }
 
     /// <summary>
@@ -168,5 +192,44 @@ public class GameController : MonoBehaviour
         gameOverMenu.SetEnabled(true);
 
         EnableCursor();
+    }
+
+    /// <summary>
+    /// Update health bar to reflect current health.
+    /// </summary>
+    private void UpdatePlayerHealthBar()
+    {
+        playerHealthBar.transform.localScale = Vector3.Lerp(playerHealthBar.transform.localScale, new Vector3(player.CurrentHealth / Player.MaxHealth, 1f, 1f), 0.1f);
+    }
+
+    /// <summary>
+    /// Spawn enemy regularly.
+    /// </summary>
+    private void SpawnEnemy()
+    {
+        // Enemy init position
+        Vector3 spawnPosition = new Vector3(Random.Range(-50f, 50f), 2f, Random.Range(-50f, 50f));
+        // Enemy init rotation
+        Quaternion spawRotation = Quaternion.identity;
+
+        Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPosition, spawRotation);
+    }
+
+    /// <summary>
+    /// Timer to spawn next enemy.
+    /// </summary>
+    private bool EnemySpawnTimer()
+    {
+        if (!player.IsDead) enemySpawnTimer += Time.deltaTime;
+        return enemySpawnTimer >= enemySpawnTimerMax;
+    }
+
+    /// <summary>
+    /// Reset timer to spawn next enemy.
+    /// </summary>
+    private void ResetEnemySpawnTimer()
+    {
+        enemySpawnTimer = 0f;
+        enemySpawnTimerMax = Random.Range(1f, 2f);
     }
 }

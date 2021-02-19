@@ -17,11 +17,18 @@ public class PlayerGunLaser : MonoBehaviour
 
             // If correct color then destroy enemy
             if (color == enemy.color)
+            {
                 // Destroy enemy
                 enemy.Die();
+
+                // Add combo multiplier to player
+                player.Combo.Add(1);
+            }
             // If incorrect color then deal damage to player
             else
+            {
                 player.TakeDamage(10f);
+            }
 
             // Shake camera
             CameraShaker.Instance.Shake(CameraShakeMode.Normal);

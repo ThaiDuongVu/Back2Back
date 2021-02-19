@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Pursuer : Enemy
 {
-    private const float Speed = 5f;
+    private const float Speed = 2.5f;
 
     /// <summary>
     /// Unity Event function.

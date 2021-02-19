@@ -49,3 +49,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   postProcessProfile: {fileID: 11400000, guid: 95197fa6b650bfc4289a6f9f54a83070, type: 2}
+  player: {fileID: 0}
+  playerHealthBar: {fileID: 0}
+  enemyPrefabs:
+  - {fileID: 7468726418994265948, guid: 13c706a0b78130645822cd7f87e7d6a4, type: 3}

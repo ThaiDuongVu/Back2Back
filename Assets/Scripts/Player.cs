@@ -5,9 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public PlayerMovement Movement { get; private set; }
+    public Combo Combo { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
 
-    public const float MaxHealth = 10f;
+    public const float MaxHealth = 100f;
     public float CurrentHealth { get; set; }
 
     public bool IsControllable { get; set; } = true;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Movement = GetComponent<PlayerMovement>();
+        Combo = GetComponent<Combo>();
         Rigidbody = GetComponent<Rigidbody>();
     }
 

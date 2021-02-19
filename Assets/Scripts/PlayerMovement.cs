@@ -145,6 +145,8 @@ public class PlayerMovement : MonoBehaviour
 
         // If player is walking then walk
         if (player.IsWalking) Walk();
+
+        Rotate();
     }
 
     /// <summary>
@@ -156,7 +158,6 @@ public class PlayerMovement : MonoBehaviour
         if (Time.timeScale == 0f || player.IsDead) return;
 
         Animate();
-        Rotate();
     }
 
     /// <summary>
@@ -200,9 +201,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Rotate()
     {
-        // if (Mathf.Abs(lookVelocity) <= 0.25f) return;
-
-        transform.Rotate(0f, -(lookVelocity + 0.05f) * lookSensitivity * Time.timeScale, 0f, Space.Self);
+        player.Rigidbody.MoveRotation(transform.rotation * Quaternion.Euler(new Vector3(0f, -(lookVelocity + 0.05f) * lookSensitivity * Time.timeScale, 0f)));
     }
 
     /// <summary>

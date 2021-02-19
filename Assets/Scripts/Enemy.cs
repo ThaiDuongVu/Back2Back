@@ -21,6 +21,9 @@ public class Enemy : MonoBehaviour
 
     private CapsuleCollider capsuleCollider;
 
+    [SerializeField] private ParticleSystem blueExplosion;
+    [SerializeField] private ParticleSystem redExplosion;
+
     protected Player player;
     protected new Rigidbody rigidbody;
 
@@ -78,6 +81,12 @@ public class Enemy : MonoBehaviour
             // Add a *little* force upwards
             part.AddForce((Vector3.up + new Vector3(Random.Range(0f, 0.2f), 0f, Random.Range(0f, 0.2f))) * 10f, ForceMode.Impulse);
         }
+
+        // Spawn appropriate explosion
+        if (color == ProcessColor.Blue)
+            Instantiate(blueExplosion, transform.position, transform.rotation);
+        else if (color == ProcessColor.Red)
+            Instantiate(redExplosion, transform.position, transform.rotation);
     }
 
     /// <summary>
