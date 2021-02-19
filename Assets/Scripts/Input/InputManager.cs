@@ -303,9 +303,17 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Fire"",
+                    ""name"": ""ShrinkLaser"",
                     ""type"": ""Button"",
                     ""id"": ""3d9825f7-e13f-4882-baaa-d0b2bd9d95ad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ExpandLaser"",
+                    ""type"": ""Button"",
+                    ""id"": ""214a9826-3de5-4ddd-b31a-ed1d29a9107c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -594,18 +602,40 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MouseKeyboard"",
-                    ""action"": ""Fire"",
+                    ""action"": ""ShrinkLaser"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""90b94418-542a-41f8-88ce-ef504f373836"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ShrinkLaser"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8ba8825-16aa-4da7-9ac2-990e5bc91701"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""ExpandLaser"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69593708-aed8-4517-b186-dfe19004ff72"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Fire"",
+                    ""action"": ""ExpandLaser"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -653,7 +683,8 @@ public class @InputManager : IInputActionCollection, IDisposable
         m_Player_MoveKeyboard = m_Player.FindAction("MoveKeyboard", throwIfNotFound: true);
         m_Player_MoveGamepad = m_Player.FindAction("MoveGamepad", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_ShrinkLaser = m_Player.FindAction("ShrinkLaser", throwIfNotFound: true);
+        m_Player_ExpandLaser = m_Player.FindAction("ExpandLaser", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -763,7 +794,8 @@ public class @InputManager : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_MoveKeyboard;
     private readonly InputAction m_Player_MoveGamepad;
     private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_ShrinkLaser;
+    private readonly InputAction m_Player_ExpandLaser;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
@@ -771,7 +803,8 @@ public class @InputManager : IInputActionCollection, IDisposable
         public InputAction @MoveKeyboard => m_Wrapper.m_Player_MoveKeyboard;
         public InputAction @MoveGamepad => m_Wrapper.m_Player_MoveGamepad;
         public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @ShrinkLaser => m_Wrapper.m_Player_ShrinkLaser;
+        public InputAction @ExpandLaser => m_Wrapper.m_Player_ExpandLaser;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -790,9 +823,12 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @ShrinkLaser.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShrinkLaser;
+                @ShrinkLaser.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShrinkLaser;
+                @ShrinkLaser.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShrinkLaser;
+                @ExpandLaser.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExpandLaser;
+                @ExpandLaser.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExpandLaser;
+                @ExpandLaser.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExpandLaser;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -806,9 +842,12 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Fire.started += instance.OnFire;
-                @Fire.performed += instance.OnFire;
-                @Fire.canceled += instance.OnFire;
+                @ShrinkLaser.started += instance.OnShrinkLaser;
+                @ShrinkLaser.performed += instance.OnShrinkLaser;
+                @ShrinkLaser.canceled += instance.OnShrinkLaser;
+                @ExpandLaser.started += instance.OnExpandLaser;
+                @ExpandLaser.performed += instance.OnExpandLaser;
+                @ExpandLaser.canceled += instance.OnExpandLaser;
             }
         }
     }
@@ -843,6 +882,7 @@ public class @InputManager : IInputActionCollection, IDisposable
         void OnMoveKeyboard(InputAction.CallbackContext context);
         void OnMoveGamepad(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnFire(InputAction.CallbackContext context);
+        void OnShrinkLaser(InputAction.CallbackContext context);
+        void OnExpandLaser(InputAction.CallbackContext context);
     }
 }

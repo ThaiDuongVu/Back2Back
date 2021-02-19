@@ -53,6 +53,10 @@ public class GameController : MonoBehaviour
 
     #region Input Methods
 
+    /// <summary>
+    /// On escape input performed.
+    /// </summary>
+    /// <param name="context">Input context</param>
     private void EscapeOnPerformed(InputAction.CallbackContext context)
     {
         if (State == GameState.Started)
@@ -208,7 +212,7 @@ public class GameController : MonoBehaviour
     private void SpawnEnemy()
     {
         // Enemy init position
-        Vector3 spawnPosition = new Vector3(Random.Range(-50f, 50f), 2f, Random.Range(-50f, 50f));
+        Vector3 spawnPosition = player.transform.position + new Vector3(Random.Range(-50f, 50f), 2f, Random.Range(-50f, 50f));
         // Enemy init rotation
         Quaternion spawRotation = Quaternion.identity;
 

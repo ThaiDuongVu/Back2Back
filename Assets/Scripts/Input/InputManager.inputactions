@@ -290,9 +290,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Fire",
+                    "name": "ShrinkLaser",
                     "type": "Button",
                     "id": "3d9825f7-e13f-4882-baaa-d0b2bd9d95ad",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ExpandLaser",
+                    "type": "Button",
+                    "id": "214a9826-3de5-4ddd-b31a-ed1d29a9107c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -581,18 +589,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "MouseKeyboard",
-                    "action": "Fire",
+                    "action": "ShrinkLaser",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "90b94418-542a-41f8-88ce-ef504f373836",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ShrinkLaser",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8ba8825-16aa-4da7-9ac2-990e5bc91701",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MouseKeyboard",
+                    "action": "ExpandLaser",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69593708-aed8-4517-b186-dfe19004ff72",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Fire",
+                    "action": "ExpandLaser",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -13,13 +13,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Material[] coloredMaterials;
     [SerializeField] private MeshRenderer[] coloredBodyParts;
 
-    protected bool isDead;
+    public bool IsDead { get; private set; }
 
     private Animator animator;
     [SerializeField] private Rigidbody[] bodyParts;
     private BoxCollider[] bodyColliders;
-
-    private CapsuleCollider capsuleCollider;
 
     [SerializeField] private ParticleSystem blueExplosion;
     [SerializeField] private ParticleSystem redExplosion;
@@ -34,7 +32,6 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
 
         player = FindObjectOfType<Player>();
         rigidbody = GetComponent<Rigidbody>();
@@ -65,8 +62,6 @@ public class Enemy : MonoBehaviour
     {
         // Disable animation
         animator.enabled = false;
-        // Disable collider
-        capsuleCollider.enabled = false;
 
         // Enable body colliders
         foreach (BoxCollider collider in bodyColliders)
@@ -103,7 +98,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void Die()
     {
-        isDead = true;
+        IsDead = true;
         EnableRagdoll();
 
         StartCoroutine(StartDying());
@@ -117,6 +112,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (IsDead) return;
+
             Player player = other.GetComponent<Player>();
             // Deal damage to player
             player.TakeDamage(damage);

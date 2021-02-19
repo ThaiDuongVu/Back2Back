@@ -3,9 +3,18 @@ using UnityEngine;
 public class MainCamera : MonoBehaviour
 {
     public Transform followTarget;
-    private float zOffset = -100f;
+    private float zOffset;
 
     private const float InterpolationRatio = 0.1f;
+
+    /// <summary>
+    /// Unity Event function.
+    /// Initialize before first frame update.
+    /// </summary>
+    private void Start()
+    {
+        zOffset = transform.position.z;
+    }
 
     /// <summary>
     /// Unity Event function.

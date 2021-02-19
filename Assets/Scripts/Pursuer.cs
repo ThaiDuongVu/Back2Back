@@ -19,7 +19,7 @@ public class Pursuer : Enemy
     /// </summary>
     private void FixedUpdate()
     {
-        if (!isDead) Pursue(player.transform);
+        if (!IsDead) Pursue(player.transform);
     }
 
     /// <summary>

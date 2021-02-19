@@ -1,12 +1,17 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     public PlayerMovement Movement { get; private set; }
+    public PlayerGunLaser[] Lasers;
     public Combo Combo { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
+
+    public int Score { get; private set; }
 
     public const float MaxHealth = 100f;
     public float CurrentHealth { get; set; }
@@ -18,6 +23,82 @@ public class Player : MonoBehaviour
 
     public List<PlayerCharacter> characters;
 
+    [SerializeField] private TMP_Text scoreText;
+
+    public const float NormalLaserScale = 6f;
+    public const float ShortLaserScale = 3f;
+    public const float LongLaserScale = 9f;
+    private Animator cameraAnimator;
+
+    private InputManager inputManager;
+
+    /// <summary>
+    /// Unity Event function.
+    /// Initialize input handler on object enabled.
+    /// </summary>
+    private void OnEnable()
+    {
+        inputManager = new InputManager();
+
+        inputManager.Player.ShrinkLaser.started += ShrinkLaserOnStarted;
+        inputManager.Player.ExpandLaser.started += ExpandLaserOnStarted;
+
+        inputManager.Player.ShrinkLaser.canceled += ShrinkExpandLaserOnCanceled;
+        inputManager.Player.ExpandLaser.canceled += ShrinkExpandLaserOnCanceled;
+
+        inputManager.Enable();
+    }
+
+    #region Input Methods
+
+    /// <summary>
+    /// On shrink laser input started.
+    /// </summary>
+    /// <param name="context">Input context</param>
+    private void ShrinkLaserOnStarted(InputAction.CallbackContext context)
+    {
+        foreach (PlayerGunLaser laser in Lasers)
+            laser.Scale(ShortLaserScale);
+
+        cameraAnimator.SetBool("zoomIn", true);
+    }
+
+    /// <summary>
+    /// On expand laser input started.
+    /// </summary>
+    /// <param name="context">Input context</param>
+    private void ExpandLaserOnStarted(InputAction.CallbackContext context)
+    {
+        foreach (PlayerGunLaser laser in Lasers)
+            laser.Scale(LongLaserScale);
+
+        cameraAnimator.SetBool("panOut", true);
+    }
+
+    /// <summary>
+    /// On shrink/expand laser input canceled.
+    /// </summary>
+    /// <param name="context">Input context</param>
+    private void ShrinkExpandLaserOnCanceled(InputAction.CallbackContext context)
+    {
+        foreach (PlayerGunLaser laser in Lasers)
+            laser.Scale(NormalLaserScale);
+        
+        cameraAnimator.SetBool("zoomIn", false);
+        cameraAnimator.SetBool("panOut", false);
+    }
+
+    #endregion
+
+    /// <summary>
+    /// Unity Event function.
+    /// Disable input handling on object disabled.
+    /// </summary>
+    private void OnDisable()
+    {
+        inputManager.Disable();
+    }
+
     /// <summary>
     /// Unity Event function.
     /// Get component references.
@@ -27,6 +108,7 @@ public class Player : MonoBehaviour
         Movement = GetComponent<PlayerMovement>();
         Combo = GetComponent<Combo>();
         Rigidbody = GetComponent<Rigidbody>();
+        cameraAnimator = Camera.main.GetComponent<Animator>();
     }
 
     /// <summary>
@@ -36,15 +118,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         CurrentHealth = MaxHealth;
-    }
-
-    /// <summary>
-    /// Unity Event function.
-    /// Update once per frame.
-    /// </summary>
-    private void Update()
-    {
-
     }
 
     /// <summary>
@@ -78,5 +151,17 @@ public class Player : MonoBehaviour
 
         // Transition to game over state
         GameController.Instance.GameOver();
+    }
+
+    /// <summary>
+    /// Add player score.
+    /// </summary>
+    /// <param name="score">Score to add</param>
+    public void AddScore(int score)
+    {
+        Score += score * Combo.multiplier;
+
+        // Update score text
+        scoreText.text = Score.ToString();
     }
 }
