@@ -212,7 +212,7 @@ public class GameController : MonoBehaviour
     private void SpawnEnemy()
     {
         // Enemy init position
-        Vector3 spawnPosition = player.transform.position + new Vector3(Random.Range(-50f, 50f), 2f, Random.Range(-50f, 50f));
+        Vector3 spawnPosition = player.transform.position + new Vector3(Random.Range(-50f, 50f), 0f, Random.Range(-50f, 50f));
         // Enemy init rotation
         Quaternion spawRotation = Quaternion.identity;
 

@@ -25,9 +25,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private TMP_Text scoreText;
 
-    public const float NormalLaserScale = 6f;
-    public const float ShortLaserScale = 3f;
-    public const float LongLaserScale = 9f;
+    public const float NormalLaserScale = 7.5f;
+    public const float ShortLaserScale = 2.5f;
+    public const float LongLaserScale = 15f;
     private Animator cameraAnimator;
 
     private InputManager inputManager;

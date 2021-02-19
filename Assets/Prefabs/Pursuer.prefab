@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 454310913426314666}
   - component: {fileID: 6401352275311014531}
   - component: {fileID: 255651412775844264}
-  - component: {fileID: 454310913426314669}
+  - component: {fileID: 3650619426885514718}
   - component: {fileID: 7468726418994265948}
   m_Layer: 0
   m_Name: Pursuer
@@ -323,7 +323,7 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &454310913426314669
+--- !u!95 &3650619426885514718
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -336,7 +336,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 40c23cbfd37ed3949ad9535700f0a479, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -362,6 +362,12 @@ MonoBehaviour:
   coloredBodyParts:
   - {fileID: 454310913183442836}
   - {fileID: 641339221716986942}
+  deadBodyParts:
+  - {fileID: 454310912189792045}
+  - {fileID: 454310913183442836}
+  - {fileID: 454310913507733033}
+  - {fileID: 641339221716986942}
+  deadMaterial: {fileID: 2100000, guid: e69ace89a5b91ce4e8ff0ecc809098b2, type: 2}
   bodyParts:
   - {fileID: 454310912189792042}
   - {fileID: 454310913183442838}
@@ -498,7 +504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3575004350056249581
 Transform:
   m_ObjectHideFlags: 0

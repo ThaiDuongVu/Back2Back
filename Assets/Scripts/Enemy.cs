@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Material[] coloredMaterials;
     [SerializeField] private MeshRenderer[] coloredBodyParts;
 
+    [SerializeField] private MeshRenderer[] deadBodyParts;
+    [SerializeField] private Material deadMaterial;
+
     public bool IsDead { get; private set; }
 
     private Animator animator;
@@ -98,8 +101,13 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void Die()
     {
+        // Update death state
         IsDead = true;
+        // Enter ragdoll mode
         EnableRagdoll();
+
+        foreach (MeshRenderer part in deadBodyParts)
+            part.material = deadMaterial;
 
         StartCoroutine(StartDying());
     }
