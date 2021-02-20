@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
     public Rigidbody Rigidbody { get; private set; }
 
     public int Score { get; private set; }
+    public int HighScore { get; private set; }
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text highScoreText;
+    [SerializeField] private TMP_Text newHighScoreText;
 
     public const float MaxHealth = 100f;
     public float CurrentHealth { get; set; }
@@ -22,8 +26,6 @@ public class Player : MonoBehaviour
     public bool IsDead { get; private set; }
 
     public List<PlayerCharacter> characters;
-
-    [SerializeField] private TMP_Text scoreText;
 
     public const float NormalLaserScale = 7.5f;
     public const float ShortLaserScale = 2.5f;
@@ -83,7 +85,7 @@ public class Player : MonoBehaviour
     {
         foreach (PlayerGunLaser laser in Lasers)
             laser.Scale(NormalLaserScale);
-        
+
         cameraAnimator.SetBool("zoomIn", false);
         cameraAnimator.SetBool("panOut", false);
     }
@@ -109,6 +111,10 @@ public class Player : MonoBehaviour
         Combo = GetComponent<Combo>();
         Rigidbody = GetComponent<Rigidbody>();
         cameraAnimator = Camera.main.GetComponent<Animator>();
+
+        HighScore = PlayerPrefs.GetInt("HighScore", 0);
+        highScoreText.text = "High Score: " + HighScore.ToString();
+        newHighScoreText.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -160,8 +166,24 @@ public class Player : MonoBehaviour
     public void AddScore(int score)
     {
         Score += score * Combo.multiplier;
+        CheckNewHighScore();
 
         // Update score text
         scoreText.text = Score.ToString();
+    }
+
+    /// <summary>
+    /// Check for high score.
+    /// </summary>
+    private void CheckNewHighScore()
+    {
+        if (Score <= HighScore) return;
+
+        HighScore = Score;
+
+        newHighScoreText.gameObject.SetActive(true);
+        highScoreText.text = "High Score: " + HighScore.ToString();
+
+        PlayerPrefs.SetInt("HighScore", HighScore);
     }
 }

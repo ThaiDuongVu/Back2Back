@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
     protected Player player;
     protected new Rigidbody rigidbody;
 
+    [SerializeField] private FeedbackText feedbackText;
+
     /// <summary>
     /// Unity Event function.
     /// Get component references before first frame update.
@@ -105,6 +107,9 @@ public class Enemy : MonoBehaviour
         IsDead = true;
         // Enter ragdoll mode
         EnableRagdoll();
+
+        // Provide feedback
+        Instantiate(feedbackText, transform.position, feedbackText.transform.rotation);
 
         foreach (MeshRenderer part in deadBodyParts)
             part.material = deadMaterial;

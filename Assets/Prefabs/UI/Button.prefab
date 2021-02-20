@@ -299,6 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07b7b7a7a9822043a84864426294b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 0
   toggles: 
   currentState: 0
   propertyName: 

@@ -81,10 +81,12 @@ MonoBehaviour:
   Lasers:
   - {fileID: 4857730191261980492}
   - {fileID: 5121015222131882807}
+  scoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
+  newHighScoreText: {fileID: 0}
   characters:
   - {fileID: 8167806351310199573}
   - {fileID: 8440448785428232046}
-  scoreText: {fileID: 0}
 --- !u!114 &8167806352928437207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,11 +298,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7056547494039083196, guid: 75c51bcc2de9b544b8f6dc04e5df3c64, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0.93333334
+      value: 0.3254902
       objectReference: {fileID: 0}
     - target: {fileID: 7056547494039083196, guid: 75c51bcc2de9b544b8f6dc04e5df3c64, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0.93333334
+      value: 0.32156864
       objectReference: {fileID: 0}
     - target: {fileID: 7056547494039083196, guid: 75c51bcc2de9b544b8f6dc04e5df3c64, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
@@ -320,11 +322,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7056547494039083196, guid: 75c51bcc2de9b544b8f6dc04e5df3c64, type: 3}
       propertyPath: m_Parameters.colorGradient.key2.b
-      value: 0.3254902
+      value: 0.93333334
       objectReference: {fileID: 0}
     - target: {fileID: 7056547494039083196, guid: 75c51bcc2de9b544b8f6dc04e5df3c64, type: 3}
       propertyPath: m_Parameters.colorGradient.key2.g
-      value: 0.32156864
+      value: 0.93333334
       objectReference: {fileID: 0}
     - target: {fileID: 7056547494039083196, guid: 75c51bcc2de9b544b8f6dc04e5df3c64, type: 3}
       propertyPath: m_Parameters.colorGradient.key2.r
