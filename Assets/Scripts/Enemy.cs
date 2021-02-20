@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float damage;
+    public float damage;
 
     [HideInInspector] public ProcessColor color;
     private int colorIndex;
@@ -115,24 +115,5 @@ public class Enemy : MonoBehaviour
             part.material = deadMaterial;
 
         StartCoroutine(StartDying());
-    }
-
-    /// <summary>
-    /// Unity Event function.
-    /// Handle trigger collision.
-    /// </summary>
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            if (IsDead) return;
-
-            Player player = other.GetComponent<Player>();
-            // Deal damage to player
-            player.TakeDamage(damage);
-
-            // Shake camera
-            CameraShaker.Instance.Shake(CameraShakeMode.Normal);
-        }
     }
 }

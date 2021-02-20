@@ -87,6 +87,7 @@ MonoBehaviour:
   characters:
   - {fileID: 8167806351310199573}
   - {fileID: 8440448785428232046}
+  yellowExplosion: {fileID: 7861195026120020638, guid: f5bca70bd23ec8b4ead7c32dfc157337, type: 3}
 --- !u!114 &8167806352928437207
 MonoBehaviour:
   m_ObjectHideFlags: 0

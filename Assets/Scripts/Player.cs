@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     public const float LongLaserScale = 15f;
     private Animator cameraAnimator;
 
+    [SerializeField] private ParticleSystem yellowExplosion;
+
     private InputManager inputManager;
 
     /// <summary>
@@ -59,6 +61,8 @@ public class Player : MonoBehaviour
     /// <param name="context">Input context</param>
     private void ShrinkLaserOnStarted(InputAction.CallbackContext context)
     {
+        if (IsDead) return;
+
         foreach (PlayerGunLaser laser in Lasers)
             laser.Scale(ShortLaserScale);
 
@@ -71,6 +75,8 @@ public class Player : MonoBehaviour
     /// <param name="context">Input context</param>
     private void ExpandLaserOnStarted(InputAction.CallbackContext context)
     {
+        if (IsDead) return;
+
         foreach (PlayerGunLaser laser in Lasers)
             laser.Scale(LongLaserScale);
 
@@ -83,6 +89,8 @@ public class Player : MonoBehaviour
     /// <param name="context">Input context</param>
     private void ShrinkExpandLaserOnCanceled(InputAction.CallbackContext context)
     {
+        if (IsDead) return;
+
         foreach (PlayerGunLaser laser in Lasers)
             laser.Scale(NormalLaserScale);
 
@@ -185,5 +193,41 @@ public class Player : MonoBehaviour
         highScoreText.text = "High Score: " + HighScore.ToString();
 
         PlayerPrefs.SetInt("HighScore", HighScore);
+    }
+
+    /// <summary>
+    /// Collect token on trigger enter.
+    /// </summary>
+    private void CollectToken(Token token)
+    {
+        Instantiate(yellowExplosion, token.transform.position, yellowExplosion.transform.rotation);
+        Destroy(token.gameObject);
+    }
+
+    /// <summary>
+    /// Unity Event function.
+    /// Handle trigger collision.
+    /// </summary>
+    private void OnTriggerEnter(Collider other)
+    {
+        if (IsDead) return;
+
+        if (other.CompareTag("Enemy"))
+        {
+            Enemy enemy = other.GetComponent<Enemy>();
+            // Deal damage
+            TakeDamage(enemy.damage);
+        }
+        else if (other.CompareTag("Token"))
+        {
+            CollectToken(other.GetComponent<Token>());
+        }
+        else if (other.CompareTag("Border"))
+        {
+            Die();
+        }
+
+        // Shake camera
+        CameraShaker.Instance.Shake(CameraShakeMode.Normal);
     }
 }

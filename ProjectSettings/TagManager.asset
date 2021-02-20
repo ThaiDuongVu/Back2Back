@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PlayerCharacter
   - Enemy
+  - Token
+  - Border
   layers:
   - Default
   - TransparentFX

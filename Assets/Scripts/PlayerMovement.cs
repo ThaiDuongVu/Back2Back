@@ -14,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private const float Acceleration = 60f;
     private const float Deceleration = 30f;
 
-    private float lookVelocity = -0.05f;
+    private float lookVelocity;
+    private float lookScale = 0.05f;
     private float lookSensitivity = 2f;
 
     private new Camera camera;
@@ -128,6 +129,8 @@ public class PlayerMovement : MonoBehaviour
 
         camera = Camera.main;
         if (camera is { }) mainCamera = camera.GetComponent<MainCamera>();
+
+        lookVelocity = -lookScale;
     }
 
     /// <summary>
@@ -201,7 +204,8 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Rotate()
     {
-        player.Rigidbody.MoveRotation(transform.rotation * Quaternion.Euler(new Vector3(0f, -(lookVelocity + 0.05f) * lookSensitivity * Time.timeScale, 0f)));
+        lookVelocity = Mathf.Clamp(lookVelocity, -3f, 3f);
+        player.Rigidbody.MoveRotation(transform.rotation * Quaternion.Euler(new Vector3(0f, -(lookVelocity + lookScale) * lookSensitivity * Time.timeScale, 0f)));
     }
 
     /// <summary>

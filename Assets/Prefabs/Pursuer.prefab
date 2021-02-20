@@ -174,7 +174,7 @@ Transform:
   m_GameObject: {fileID: 454310913183442835}
   m_LocalRotation: {x: 0.35355338, y: -0.1464466, z: 0.35355338, w: 0.8535535}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 454310912797733698}
   m_RootOrder: 1
@@ -360,12 +360,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 05d904849b5869b4fac23274156540eb, type: 2}
   coloredBodyParts:
   - {fileID: 454310913183442836}
-  - {fileID: 0}
   deadBodyParts:
   - {fileID: 454310912189792045}
   - {fileID: 454310913183442836}
   - {fileID: 454310913507733033}
-  - {fileID: 0}
   deadMaterial: {fileID: 2100000, guid: e69ace89a5b91ce4e8ff0ecc809098b2, type: 2}
   bodyParts:
   - {fileID: 454310912189792042}
