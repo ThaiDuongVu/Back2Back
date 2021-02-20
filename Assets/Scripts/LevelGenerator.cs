@@ -26,17 +26,36 @@ public class LevelGenerator : MonoBehaviour
     private float gapBetweenUnits = 70.7f;
 
     private List<Transform> previousUnits = new List<Transform>();
+    public Transform connectorBorder;
 
     /// <summary>
     /// Generate next piece of level.
     /// </summary>
     public void GenerateNext()
     {
+        DestroyPrevious();
+
         previousUnits.Add(SpawnConnector());
         previousUnits.Add(SpawnUnit());
         previousUnits.Add(SpawnTokens());
         previousUnits.Add(SpawnTokens());
         previousUnits.Add(SpawnTokens());
+    }
+
+    /// <summary>
+    /// Destroy previous level to save on resources.
+    /// </summary>
+    public void DestroyPrevious()
+    {
+        if (previousUnits.Count < 10) return;
+
+        for (int i = 0; i < 5; i++)
+            Destroy(previousUnits[i].gameObject);
+
+        for (int _ = 0; _ < 5; _++)
+            previousUnits.RemoveAt(0);
+
+        Instantiate(connectorBorder, previousUnits[0].position - new Vector3(35.85f, 0f, 35.85f), connectorBorder.transform.rotation);
     }
 
     /// <summary>

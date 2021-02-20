@@ -54,4 +54,4 @@ MonoBehaviour:
   - {fileID: 2396310979164810210, guid: 7670cfda361714c48ad394e1b5b6e8a1, type: 3}
   - {fileID: 8804830752360366068, guid: e51656e260410314bacce1fbd50e2fc9, type: 3}
   - {fileID: 1728294225729787130, guid: df03725380ee68b4b8c980e4220cfb16, type: 3}
-  tokenPrefab: {fileID: 3192639848937895186, guid: 08950b8b5e70d93469b26b0e19ac4c49, type: 3}
+  connectorBorder: {fileID: 929823288428742848, guid: b8e8c33378d009a4f81d9fb1be176c2f, type: 3}
