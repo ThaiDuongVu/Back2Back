@@ -32,8 +32,6 @@ public class Player : MonoBehaviour
     public const float LongLaserScale = 15f;
     private Animator cameraAnimator;
 
-    [SerializeField] private ParticleSystem yellowExplosion;
-
     private InputManager inputManager;
 
     /// <summary>
@@ -202,10 +200,7 @@ public class Player : MonoBehaviour
     {
         // Add token score
         AddScore(10);
-
-        // Destroy token
-        Instantiate(yellowExplosion, token.transform.position, yellowExplosion.transform.rotation);
-        Destroy(token.gameObject);
+        token.OnCollected();
     }
 
     /// <summary>
