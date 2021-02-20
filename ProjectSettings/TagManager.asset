@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Token
   - Border
+  - LevelNext
   layers:
   - Default
   - TransparentFX

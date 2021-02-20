@@ -56,6 +56,14 @@ public class PlayerGunLaser : MonoBehaviour
             // Shake camera
             CameraShaker.Instance.Shake(CameraShakeMode.Normal);
         }
+        else if (other.CompareTag("Token"))
+        {
+            // Collect token
+            player.CollectToken(other.GetComponent<Token>());
+
+            // Shake camera
+            CameraShaker.Instance.Shake(CameraShakeMode.Normal);
+        }
     }
 
     /// <summary>

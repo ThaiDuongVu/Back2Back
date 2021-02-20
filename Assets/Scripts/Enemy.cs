@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private IEnumerator StartDying()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 

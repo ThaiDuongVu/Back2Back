@@ -198,8 +198,12 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Collect token on trigger enter.
     /// </summary>
-    private void CollectToken(Token token)
+    public void CollectToken(Token token)
     {
+        // Add token score
+        AddScore(10);
+
+        // Destroy token
         Instantiate(yellowExplosion, token.transform.position, yellowExplosion.transform.rotation);
         Destroy(token.gameObject);
     }
@@ -225,6 +229,11 @@ public class Player : MonoBehaviour
         else if (other.CompareTag("Border"))
         {
             Die();
+        }
+        else if (other.CompareTag("LevelNext"))
+        {
+            LevelGenerator.Instance.GenerateNext();
+            other.gameObject.SetActive(false);
         }
 
         // Shake camera

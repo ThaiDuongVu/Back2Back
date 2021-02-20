@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3887967341696464317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3887967341696464316}
+  - component: {fileID: 3887967341696464291}
+  m_Layer: 0
+  m_Name: LevelGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3887967341696464316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887967341696464317}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3887967341696464291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887967341696464317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b4a52d10bc7f34894c3a81a2c3a212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelUnits:
+  - {fileID: 5909101731359649523, guid: 8e378c1be89f2ee4f97f85dc9987d986, type: 3}
+  levelConnectors:
+  - {fileID: 210616060578622809, guid: 360743061198c3e45a3e18e2e38505a3, type: 3}
+  - {fileID: 7416677995998272696, guid: 52f1563802b6a664fad523fc028f265d, type: 3}
+  - {fileID: 6666274103930396546, guid: 4691af764b5c45f4fb22df248dbaae85, type: 3}
+  - {fileID: 2251838487633028957, guid: 0bbb423c134c1154b834fe49a0632dac, type: 3}
+  tokenUnits:
+  - {fileID: 2396310979164810210, guid: 7670cfda361714c48ad394e1b5b6e8a1, type: 3}
+  - {fileID: 8804830752360366068, guid: e51656e260410314bacce1fbd50e2fc9, type: 3}
+  - {fileID: 1728294225729787130, guid: df03725380ee68b4b8c980e4220cfb16, type: 3}
+  tokenPrefab: {fileID: 3192639848937895186, guid: 08950b8b5e70d93469b26b0e19ac4c49, type: 3}
