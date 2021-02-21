@@ -13,6 +13,7 @@ public class HomeController : MonoBehaviour
     private void Start()
     {
         postProcessProfile.TryGetSettings(out depthOfField);
+        SetDepthOfField(false);
     }
 
     /// <summary>

@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 2251838486139684603}
   - component: {fileID: 2251838486139684601}
   - component: {fileID: 2251838486139684602}
+  - component: {fileID: 7708839321266398727}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -117,6 +118,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7708839321266398727
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2251838486139684548}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: -0.00000009536743, y: 0, z: 0.00000011920929}
 --- !u!1 &2251838486903692193
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +191,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ac9795dac91bcc499602053465d17cb, type: 2}
+  - {fileID: 2100000, guid: e5035436e185bbf4484826ffa2d897de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -272,7 +286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ac9795dac91bcc499602053465d17cb, type: 2}
+  - {fileID: 2100000, guid: e5035436e185bbf4484826ffa2d897de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -372,6 +386,7 @@ GameObject:
   - component: {fileID: 8483686556239686333}
   - component: {fileID: 5586499932306393663}
   - component: {fileID: 1319146251700580318}
+  - component: {fileID: 8600484424152441179}
   m_Layer: 0
   m_Name: Ground_1
   m_TagString: Untagged
@@ -442,6 +457,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8600484424152441179
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3720310524400719902}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: -0.00000009536743, y: 0, z: 0.00000023841858}
 --- !u!1 &4091822203169234817
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +530,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ac9795dac91bcc499602053465d17cb, type: 2}
+  - {fileID: 2100000, guid: e5035436e185bbf4484826ffa2d897de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -597,7 +625,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ac9795dac91bcc499602053465d17cb, type: 2}
+  - {fileID: 2100000, guid: e5035436e185bbf4484826ffa2d897de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -692,7 +720,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ac9795dac91bcc499602053465d17cb, type: 2}
+  - {fileID: 2100000, guid: e5035436e185bbf4484826ffa2d897de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -787,7 +815,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ac9795dac91bcc499602053465d17cb, type: 2}
+  - {fileID: 2100000, guid: e5035436e185bbf4484826ffa2d897de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -833,6 +861,7 @@ GameObject:
   - component: {fileID: 1791421304732244687}
   - component: {fileID: 3734922677547239874}
   - component: {fileID: 8989873621980951222}
+  - component: {fileID: 418012396524343087}
   m_Layer: 0
   m_Name: Ground_2
   m_TagString: Untagged
@@ -903,3 +932,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &418012396524343087
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7180811371177405457}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: -0.00000017881393, y: 0, z: 0.00000047683716}

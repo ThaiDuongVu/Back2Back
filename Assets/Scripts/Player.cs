@@ -214,24 +214,35 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy.IsDead) return;
+
             // Deal damage
             TakeDamage(enemy.damage);
+
+            // Shake camera
+            CameraShaker.Instance.Shake(CameraShakeMode.Normal);
         }
         else if (other.CompareTag("Token"))
         {
             CollectToken(other.GetComponent<Token>());
+
+            // Shake camera
+            CameraShaker.Instance.Shake(CameraShakeMode.Normal);
         }
         else if (other.CompareTag("Border"))
         {
             Die();
+
+            // Shake camera
+            CameraShaker.Instance.Shake(CameraShakeMode.Normal);
         }
         else if (other.CompareTag("LevelNext"))
         {
             LevelGenerator.Instance.GenerateNext();
-            other.gameObject.SetActive(false);
-        }
+            Destroy(other.gameObject);
 
-        // Shake camera
-        CameraShaker.Instance.Shake(CameraShakeMode.Normal);
+            // Shake camera
+            CameraShaker.Instance.Shake(CameraShakeMode.Normal);
+        }
     }
 }
